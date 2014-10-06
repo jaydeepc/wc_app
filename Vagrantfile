@@ -107,6 +107,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = {
       rbenv: {
         rubies: ["2.1.3"],
+        global: "2.1.3",
         gems: {
           "2.1.3" => [ { name: "bundler" } ]
         },
