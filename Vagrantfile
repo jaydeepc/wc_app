@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "hashicorp/precise32"
+  config.vm.box = "ubuntu/trusty64"
 
   config.omnibus.chef_version = :latest
 
@@ -95,9 +95,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "chef_solo" do |chef|
     chef.cookbooks_path = %w[cookbooks site-cookbooks]
     chef.add_recipe "apt"
+    chef.add_recipe "vim"
     chef.add_recipe "apache2"
     chef.add_recipe "nodejs"
     chef.add_recipe "postgresql::server"
+    chef.add_recipe "postgresql::client"
     chef.add_recipe "ruby_build"
     chef.add_recipe "rbenv::system"
     chef.add_recipe "wc_recipe"
@@ -107,7 +109,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         rubies: ["2.1.3"],
         gems: {
           "2.1.3" => [ { name: "bundler" } ]
-          },
+        },
+      },
+      postgresql: {
+        password: {
+          postgres: 'password'
+        },
+        pg_hba: [
+                 { comment: "#Set md5 auth for rails app",
+                   type: "local",
+                   db: "all",
+                   user: "admin",
+                   addr: nil,
+                   method: "md5" }
+                ]
       }
     }
   end

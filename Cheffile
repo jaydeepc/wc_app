@@ -12,7 +12,10 @@ cookbook 'nodejs', '~> 2.1.0'
 cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv.git'
 cookbook 'vim', '~> 1.1.2'
 cookbook 'ruby_build', '~> 0.8.0'
-cookbook 'wc_recipe', path: 'site-cookbooks/wc_recipes' #git: 'git://github.com/entrobe/wc_recipe.git'
+cookbook 'wc_recipe', path: 'site-cookbooks/wc_recipes' #git:
+#'git://github.com/entrobe/wc_recipe.git'
+#cookbook 'locale', '~> 1.0.2'
+#cookbook 'locales', '~> 0.3.1'
 
 # cookbook 'postgresql',
 #   :git => 'https://github.com/findsyou/cookbooks',
