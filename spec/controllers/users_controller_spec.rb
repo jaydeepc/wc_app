@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe WelcomeController do
+describe UsersController do
   describe 'GET #index' do
     it 'should respond with 200' do
       get :index
