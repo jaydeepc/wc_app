@@ -11,6 +11,7 @@ development:
 
 test: &TEST
   <<: *default
+  database: test
 
 production:
   <<: *default
