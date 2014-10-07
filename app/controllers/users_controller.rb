@@ -1,13 +1,8 @@
 class UsersController < ApplicationController
   def create
     @user = User.new user_params
-    unless @user.valid?
-      render action: 'edit'
-    end
-  end
-
-  def index
-    @user = User.new
+    @user.save
+    redirect_to root_path
   end
 
   def user_params

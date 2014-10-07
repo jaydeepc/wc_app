@@ -1,4 +1,5 @@
+#welcome Welcome!
 #email.my-class
-  = form_for @user do |f|
-    = f.email_field :email
-    = f.submit "submit email"
+  = form_tag '/users' do
+    = email_field :user, :email
+    = submit_tag "submit email"
