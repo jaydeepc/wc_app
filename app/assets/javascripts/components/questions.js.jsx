@@ -24,13 +24,21 @@ var AnswerList = React.createClass({
   render: function(){
     var answerNode = this.props.answers.map(function(answer){
       return(
-        <span> { answer } </span>
+        <Answer answer={ answer } />
       )
     });
     return (
       <div>
         { answerNode }
       </div>
+    )
+  }
+})
+
+var Answer = React.createClass({
+  render: function(){
+    return (
+      <input type="submit" value={ this.props.answer } />
     )
   }
 })
