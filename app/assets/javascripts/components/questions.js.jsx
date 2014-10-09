@@ -2,14 +2,33 @@
 
 var Quiz = React.createClass({
   getInitialState: function(){
-    return { index: 0 };
+    return { index: 0, answers: []};
   },
-  handleAnswer: function(){
-    this.setState({index: 1});
+  handleAnswer: function(event){
+    var answered = $(event.target).data('key');
+    this.setState({ index:   this.state.index + 1,
+                    answers: this.state.answers.concat(answered)});
   },
   render: function(){
+    if(this.state.index > this.props.questions.length - 1) {
+      return <Reccomendation answers={ this.state.answers }/>
+    }
+    return <QuestionBox question={ this.props.questions[this.state.index] } handler={ this.handleAnswer } />
+  }
+})
+
+var Reccomendation = React.createClass({
+  render: function(){
+    var answerList = this.props.answers.map(function(answer){
+      return <li> {answer} </li>
+    })
     return (
-      <QuestionBox question={ this.props.questions[this.state.index] } handler={ this.handleAnswer } />
+      <div>
+        This is our reccomendation based on these answers
+        <ul>
+          {answerList}
+        </ul>
+      </div>
     )
   }
 })
