@@ -1,19 +1,28 @@
 /** @jsx React.DOM */
 
+var Quiz = React.createClass({
+  getInitialState: function(){
+    return { index: 0 };
+  },
+  handleAnswer: function(){
+    this.setState({index: 1});
+  },
+  render: function(){
+    return (
+      <QuestionBox question={ this.props.questions[this.state.index] } handler={ this.handleAnswer } />
+    )
+  }
+})
+
 var QuestionBox = React.createClass({
   render: function(){
-    var questionNodes = this.props.questions.map(function(question){
-      return(
-        <div>
-          <h1> Please Answer This Question </h1>
-          <Question question={question.text}/>
-          <AnswerList answers={question.answers}/>
-        </div>
-        )
-    });
     return (
       <div>
-        { questionNodes }
+        <div>
+          <Question question={ this.props.question.text }/>
+          <AnswerList answers={ this.props.question.answers } handler={ this.props.handler }/>
+          <br/>
+        </div>
       </div>
     )
   }
@@ -22,16 +31,17 @@ var QuestionBox = React.createClass({
 var Question = React.createClass({
   render: function(){
     return (
-      <h2> { this.props.question } </h2>
+      <span> { this.props.question } </span>
     )
   }
 })
 
 var AnswerList = React.createClass({
   render: function(){
+    var scopedHandler = this.props.handler
     var answerNode = this.props.answers.map(function(answer){
       return(
-        <Answer key={ answer.id } answer={ answer.text } />
+        <Answer key={ answer.id } answer={ answer.text } handler={ scopedHandler }/>
       )
     });
     return (
@@ -43,12 +53,9 @@ var AnswerList = React.createClass({
 })
 
 var Answer = React.createClass({
-  handleClick: function(e){
-    return;
-  },
   render: function(){
     return (
-      <input type="button" value={ this.props.answer } data-key={ this.props.key } onClick={ this.handleClick } />
+      <input type="button" value={ this.props.answer } data-key={ this.props.key } onClick={ this.props.handler } />
     )
   }
 })
