@@ -2,13 +2,20 @@
 
 var QuestionBox = React.createClass({
   render: function(){
+    var questionNodes = this.props.questions.map(function(question){
+      return(
+        <div>
+          <h1> Please Answer This Question </h1>
+          <Question question={question.text}/>
+          <AnswerList answers={question.answers}/>
+        </div>
+        )
+    });
     return (
       <div>
-      <h1> Please Answer This Question </h1>
-      <Question question={this.props.question}/>
-      <AnswerList answers={this.props.answers}/>
+        { questionNodes }
       </div>
-    );
+    )
   }
 })
 
