@@ -20,7 +20,7 @@ var Quiz = React.createClass({
 var Reccomendation = React.createClass({
   render: function(){
     var answerList = this.props.answers.map(function(answer){
-      return <li> {answer} </li>
+      return <li key={answer}> {answer} </li>
     })
     return (
       <div>
