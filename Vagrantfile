@@ -4,12 +4,27 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+
+required_plugins = %w( vagrant-omnibus vagrant-librarian-chef )
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin? plugin
+    puts "#{plugin} - needs to be installed. Vagrant will install it now......"
+    system "vagrant plugin install #{plugin}"
+    if plugin == required_plugins.last
+      puts "Done! Pleaes re-run the command vagrant up"
+      exit
+    end
+  end
+end
+
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
+
   config.vm.box = "ubuntu/trusty64"
 
   config.omnibus.chef_version = :latest
