@@ -24,7 +24,7 @@ var AnswerList = React.createClass({
   render: function(){
     var answerNode = this.props.answers.map(function(answer){
       return(
-        <Answer answer={ answer } />
+        <Answer key={ answer.id } answer={ answer.text } />
       )
     });
     return (
@@ -36,9 +36,12 @@ var AnswerList = React.createClass({
 })
 
 var Answer = React.createClass({
+  handleClick: function(e){
+    return;
+  },
   render: function(){
     return (
-      <input type="submit" value={ this.props.answer } />
+      <input type="button" value={ this.props.answer } data-key={ this.props.key } onClick={ this.handleClick } />
     )
   }
 })
