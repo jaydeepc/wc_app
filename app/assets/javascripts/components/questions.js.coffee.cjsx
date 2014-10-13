@@ -1,5 +1,3 @@
-R = React.DOM
-
 Quiz = React.createClass
   getInitialState: -> index: 0, answers: []
   handleAnswer: (event) ->
