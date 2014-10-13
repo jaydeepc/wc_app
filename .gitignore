@@ -22,3 +22,6 @@
 .idea/
 /vendor/bundle
 /node_modules
+/features/screenshots
+*.DS_Store
+
