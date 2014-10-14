@@ -1,6 +1,3 @@
-React = require('react/addons')
-R = React.DOM
-
 CheckboxWithLabel = React.createClass 
 	getInitialState: ->
 		isChecked: false
@@ -9,8 +6,8 @@ CheckboxWithLabel = React.createClass
 		return
 	render: ->
 		<label>
-      <input type='checkbox' checked= { @state.isChecked } onChange={ @onChange } />
-      { if @state.isChecked then @props.labelOn else @props.labelOff }
-    </label>
+      		<input type='checkbox' checked= { @state.isChecked } onChange={ @onChange } />
+      		{ if @state.isChecked then @props.labelOn else @props.labelOff }
+    	</label>
 
-module.exports = CheckboxWithLabel
+window.CheckboxWithLabel = CheckboxWithLabel

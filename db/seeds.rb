@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Question.create({
+	question_text: 'What is the answer to life, the universe and everything?',
+	answers: Answer.create([ { answer_text: '42' }, { answer_text: 'bacon' }])
+})
+

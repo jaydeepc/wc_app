@@ -51,3 +51,4 @@ Answer = React.createClass
            onClick={ @props.handler } />
 
 window.Quiz = Quiz
+window.Answer = Answer
