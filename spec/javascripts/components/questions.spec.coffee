@@ -1,13 +1,20 @@
 describe 'Questions', ->
   describe 'Answer', ->
-    it 'Should execute handler on click', ->
-      handlerSpy = jasmine.createSpy 'handlerSpy'
+    beforeEach ->
+      @handlerSpy = jasmine.createSpy 'handlerSpy'
+      @answerComponent = TestUtils.renderIntoDocument Answer { answer: 'some answer', key: 42, handler: @handlerSpy }
+      @answerElement = TestUtils.findRenderedDOMComponentWithTag @answerComponent, 'input'
 
-      TestUtils = React.addons.TestUtils
-      answerComponent = TestUtils.renderIntoDocument Answer { answer: 'some answer', key: 42, handler: handlerSpy }
+    it 'executes handler on click', ->
+      TestUtils.Simulate.click @answerElement
 
-      answerElement = TestUtils.findRenderedDOMComponentWithTag answerComponent, 'input'
-      TestUtils.Simulate.click answerElement
+      expect(@handlerSpy).toHaveBeenCalled()
 
-      expect(handlerSpy).toHaveBeenCalled()
+    it 'initializes the element with provided properties', ->
+      node = @answerElement.getDOMNode()
+
+      expect(node).toHaveAttr('type', 'button')
+      expect(node).toHaveValue('some answer')
+      expect(node).toHaveAttr('data-key', '42')
+
 

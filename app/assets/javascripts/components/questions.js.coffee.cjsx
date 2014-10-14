@@ -50,5 +50,6 @@ Answer = React.createClass
            data-key={ @props.key }
            onClick={ @props.handler } />
 
-window.Quiz = Quiz
-window.Answer = Answer
+root = exports ? this
+root.Quiz = Quiz
+root.Answer = Answer
