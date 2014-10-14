@@ -1,4 +1,4 @@
-- hosts: "104.131.40.88"
+- hosts: ci-servers
   remote_user: root
   roles:
     - ci

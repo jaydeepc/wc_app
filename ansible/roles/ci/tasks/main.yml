@@ -1,40 +1,6 @@
 ---
 
-  - name: Import the jenkins repo key
-    rpm_key: state=present key=http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-
-  - name: Configure the jenkins yum repo
-    get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo mode=0440
-
-  - name: Install java
-    yum: name=java-1.7.0 state=latest
-
-  - name: Install jenkins some specific version
-    yum: name=jenkins-1.584 state=present
-
-  - name: Start jenkins
-    service: name=jenkins state=started enabled=yes
-
-  - name: Wait for Jenkins to start up before proceeding.
-    wait_for: host=localhost port=8080 timeout=300
-
-  - name: Get the jenkins-cli jarfile from the Jenkins server.
-    get_url: url=http://localhost:8080/jnlpJars/jenkins-cli.jar dest=~/jenkins-cli.jar
-    register: jarfile_get
-    until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
-    retries: 5
-    delay: 5
-
-  - name: Install Jenkins plugins.
-    command: java -jar ~/jenkins-cli.jar -s http://localhost:8080/ install-plugin {{ item }} creates=/var/lib/jenkins/plugins/{{ item }}.jpi
-    with_items: jenkins_plugins
-    notify: restart jenkins
-
-  - name: Install EPEL
-    yum: name=epel-release state=latest
-
-  - name: Install ansible
-    yum: name=ansible state=latest
-
-  - name: Disable host checking in absible
-    lineinfile: dest=/etc/ansible/ansible.cfg regexp="host_key_checking" insertafter="^\[defaults\]" line="host_key_checking = False"
+  - include: jenkins.yml tags=install
+  - include: jenkins-plugins.yml tags=plugins
+  - include: ansible.yml tags=ansible
+  - include: ruby.yml tags=ruby

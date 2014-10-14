@@ -1,0 +1,25 @@
+---
+
+  - name: Import the jenkins repo key
+    rpm_key: state=present key=http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+
+  - name: Configure the jenkins yum repo
+    get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo mode=0440
+
+  - name: Install java
+    yum: name=java-1.7.0 state=latest
+
+  - name: Install jenkins some specific version
+    yum: name=jenkins-1.584 state=present
+
+  - name: Install git
+    yum: name=git state=latest
+
+  - name: Generate SSH key for jenkins user
+    user: name=jenkins generate_ssh_key=yes
+
+  - name: Start jenkins
+    service: name=jenkins state=started enabled=yes
+
+  - name: Wait for Jenkins to start up before proceeding.
+    wait_for: host=localhost port=8080 timeout=300

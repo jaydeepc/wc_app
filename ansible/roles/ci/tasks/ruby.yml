@@ -1,0 +1,33 @@
+---
+  - name: Install ruby dependencies
+    yum: name={{ item }} state=latest
+    with_items:
+    - patch
+    - libyaml-devel
+    - libffi-devel
+    - glibc-headers
+    - autoconf
+    - gcc-c++
+    - glibc-devel
+    - patch
+    - readline-devel
+    - zlib-devel
+    - openssl-devel
+    - automake
+    - libtool
+    - bison
+
+  - name: Install RVM
+    shell: curl -sSL https://get.rvm.io | bash -s stable creates="~/.rvm"
+    sudo: yes
+    sudo_user: jenkins
+
+  - name: Install ruby
+    shell: "source ~/.bash_profile && rvm install 2.1"
+    sudo: yes
+    sudo_user: jenkins
+
+  - name: Install bundler
+    shell: "source ~/.bash_profile && rvm all do gem install bundler"
+    sudo: yes
+    sudo_user: jenkins
