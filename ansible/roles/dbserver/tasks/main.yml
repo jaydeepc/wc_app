@@ -1,0 +1,31 @@
+---
+
+  - name: Install postgresql rpm
+    yum: state=installed name="http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm"
+
+  - name: Install pg devel headers and libs
+    yum: state=installed name="postgresql-devel"
+
+  - name: Install pg pkg
+    yum: state=installed name="postgresql93-server"
+
+  - name: Install pg contrib pkg
+    yum: state=installed name="postgresql93-contrib"
+
+  - name: install psycopg2
+    yum: state=installed name="python-psycopg2.x86_64"
+
+  - name: Initiate database
+    command: service postgresql-9.3 initdb
+
+  - name: Copy valid pg_hba.conf
+    template: src=pg_hba.conf.j2 dest=/var/lib/pgsql/9.3/data/pg_hba.conf
+
+  - name: Start pg service
+    service: name=postgresql-9.3 state=restarted
+
+  # Create rails user, grant privilege to create other databases and demote rails from super user status
+  - name: add pg user
+    sudo: yes
+    sudo_user: postgres
+    postgresql_user: name=admin password=password role_attr_flags=CREATEDB,NOSUPERUSER

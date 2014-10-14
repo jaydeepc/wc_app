@@ -19,3 +19,9 @@
     command: java -jar ~/jenkins-cli.jar -s http://localhost:8080/ install-plugin {{ item }} creates=/var/lib/jenkins/plugins/{{ item }}.jpi
     with_items: jenkins_plugins
     notify: restart jenkins
+
+  - name: copy job config xml
+    copy: src=bundle_unit_job_config.xml dest=/var/lib/jenkins/bundle_unit_job_config.xml
+
+  - name: Install jobs
+    shell: cat /var/lib/jenkins/bundle_unit_job_config.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job bundle_units
