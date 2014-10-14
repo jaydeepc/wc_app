@@ -1,6 +1,10 @@
-var Transformer = require('coffee-script');
+var coffee = require('coffee-react');
+
 module.exports = {
-  process: function(src) {
-    return Transformer.compile(src);
+	process: function(src, path) {
+		if (path.match(/\.coffee/)) {
+			return coffee.compile(src, {'bare': true});
+    }
+    return src;
   }
 };

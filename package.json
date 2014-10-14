@@ -1,16 +1,22 @@
 {
   "dependencies": {
     "react": "*",
-    "coffee-script": "*"
+    "coffee-react": "*"
   },
   "jest": {
     "testDirectoryName": "spec",
-    "testPathDirs": ["spec"],
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
-    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"],
-    "testFileExtensions": [ "coffee" ]
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ],
+    "testFileExtensions": [
+      "cjsx", "coffee", "js"
+    ]
   },
   "scripts": {
     "test": "jest"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.1.18"
   }
 }
