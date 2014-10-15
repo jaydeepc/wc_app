@@ -34,7 +34,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>bundle install
-rake db:drop db:create db:migrate spec:javascript</command>
+RAILS_ENV=test rake db:drop db:create db:migrate spec:javascript</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
