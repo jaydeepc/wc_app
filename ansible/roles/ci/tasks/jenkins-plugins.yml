@@ -21,7 +21,7 @@
     notify: restart jenkins
 
   - name: copy job config xml
-    copy: src=bundle_unit_job_config.xml dest=/var/lib/jenkins/bundle_unit_job_config.xml
+    copy: src=run_spec_config.xml dest=/var/lib/jenkins/run_spec.xml
 
   - name: Install jobs
-    shell: cat /var/lib/jenkins/bundle_unit_job_config.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job bundle_units
+    shell: cat /var/lib/jenkins/bundle_unit_job_config.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job run_specs
