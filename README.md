@@ -1,6 +1,9 @@
 QuatsUpWorld 
 ============
 
+A Simple Recommendation App
+---------------------------
+
 To run:
 
 1. Clone git repo
