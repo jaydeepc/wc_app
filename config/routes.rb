@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'best' => 'landing_page#best'
   get 'perfect' => 'landing_page#perfect'
   get 'right' => 'landing_page#right'
+  resources :recommendations, only: [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

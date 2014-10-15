@@ -5,8 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Question.create({
-	question_text: 'What is the answer to life, the universe and everything?',
-	answers: Answer.create([ { answer_text: '42' }, { answer_text: 'bacon' }])
-})
+Question.create([
+  {
+	  question_text: 'How big is your grilling space?',
+	  answers: Answer.create([ { answer_text: 'Big' }, { answer_text: 'Small' }])
+  },
+  {
+    question_text: 'How many people do you typically cook for?',
+    answers: Answer.create([{ answer_text: 'Few' }, { answer_text: 'Lots' }])
+  },
+  {
+    question_text: 'What style of grill do you prefer?',
+    answers: Answer.create([ { answer_text: 'New' }, { answer_text: 'Traditional' }])
+  }
+])
 
