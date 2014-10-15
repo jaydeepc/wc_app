@@ -19,17 +19,19 @@ To run:
 
 6. Run ```$ vagrant up --provision```
 
-7. Change directories into the cloned git repo (from step 1), and run ```$ vagrant ssh```
+7. Change directories into the cloned git repo (from step 1) ```$ cd wc_app```
 
-8. Run ```$ cd /vagrant```
+8. Run ```$ vagrant ssh```
 
-9. ```$ bundle install```
+9. Run ```$ cd /vagrant```
 
-10. Run ```$ bundle exec rails s```
+10. Run ```bundle exec rake db:create db:migrate```
 
-11. Point your favorite browser to localhost:3000
+11. Run ```$ bundle exec rails s```
+
+12. Point your favorite browser to localhost:3000
 
 Enjoy!
 
 After running steps 1-5, to run the app subsequent times you should be
-able to start at step 6.
+able to start at step 7.
