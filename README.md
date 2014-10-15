@@ -19,7 +19,7 @@ To run:
 
 6. Run ```$ vagrant up --provision```
 
-7. Run ```$ vagrant ssh```
+7. Change directories into the cloned git repo (from step 1), and run ```$ vagrant ssh```
 
 8. Run ```$ cd /vagrant```
 
