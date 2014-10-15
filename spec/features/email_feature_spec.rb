@@ -7,6 +7,6 @@ describe 'submitting email address' do
       fill_in :user_email, with: 'whatever@google.com'
     end
     click_button 'submit email'
-    expect(page).to have_content 'Find Your Perfect Grill!'
+    expect(page).to have_content 'Find The Best Grill'
   end
 end

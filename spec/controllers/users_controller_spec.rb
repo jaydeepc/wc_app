@@ -1,9 +1,9 @@
 require "rails_helper"
 
-describe UsersController do
-  describe 'GET #index' do
+describe LandingPageController do
+  describe 'GET #best' do
     it 'should respond with 200' do
-      get :index
+      get :best
       expect(response.status).to eq(200)
     end
   end
