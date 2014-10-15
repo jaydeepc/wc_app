@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
   
-  root 'users#index'
+  root 'landing_page#best'
 
   resources :users
 
