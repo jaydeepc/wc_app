@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users
 
   get 'questions' => 'questions#index'
+
+  get 'best' => 'landing_page#best'
+  get 'perfect' => 'landing_page#perfect'
+  get 'right' => 'landing_page#right'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
