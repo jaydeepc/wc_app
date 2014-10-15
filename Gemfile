@@ -31,9 +31,6 @@ end
 
 gem 'haml-rails'
 
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
-gem 'sprockets-coffee-react'
-
 gem 'selenium-webdriver'
 
 gem 'cucumber'

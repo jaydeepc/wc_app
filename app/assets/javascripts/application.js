@@ -11,10 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require react
-//= require react_ujs
 //= require knockout
-//= require components
 //= require_tree .
 
