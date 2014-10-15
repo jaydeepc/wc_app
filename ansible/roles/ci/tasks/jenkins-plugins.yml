@@ -20,8 +20,14 @@
     with_items: jenkins_plugins
     notify: restart jenkins
 
-  - name: copy job config xml
+  - name: copy rspec job config xml
     copy: src=run_spec_config.xml dest=/var/lib/jenkins/run_spec.xml
 
-  - name: Install jobs
-    shell: cat /var/lib/jenkins/bundle_unit_job_config.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job run_specs
+  - name: Install rspec jobs
+    shell: cat /var/lib/jenkins/run_spec.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job run_specs
+
+  - name: copy jasmine job config xml
+    copy: src=jasmine_config.xml dest=/var/lib/jenkins/jasmine_spec.xml
+
+  - name: Install jamsime jobs
+    shell: cat /var/lib/jenkins/jasmine_spec.xml | java -jar ~/jenkins-cli.jar -s http://localhost:8080/ create-job run_jasmine
