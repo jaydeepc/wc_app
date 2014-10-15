@@ -1,1 +1,13 @@
-= react_component('Quiz', { questions: @questions })
+#quiz
+  .question{'data-bind' => 'with: question'}
+    %p{'data-bind' => 'text: text'}
+      .answers{'data-bind' => 'foreach: answers'}
+        %button{'data-bind' => 'text: text, click: $root.answerQuestion'}
+
+  .recommendation{'data-bind' => 'with: recommendation'}
+    %p{'data-bind' => 'text: text'}
+
+:javascript
+  $(function() {
+    ko.applyBindings(new Quiz(#{@questions.to_json.html_safe}, '#{recommendations_path}'), $('#quiz').get(0));
+  });

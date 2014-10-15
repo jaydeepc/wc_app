@@ -20,5 +20,10 @@
   ga('create', 'UA-55676723-1', 'auto');
   ga('send', 'pageview');
 
+  $(function() {
+    $.ajaxSetup({
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    });
+  });
 </script>
 </html>
