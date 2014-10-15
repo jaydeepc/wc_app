@@ -1,16 +1,9 @@
 #experiment
-  = image_tag "cat.jpeg"
-  %h1.headline
-    Find The Best Grill For You
-  %h3.tagline
-    Become A Backyard Hero!
-  %p.body-copy
-    There's no such thing as "the best grill". Only the best grill for you. Are you looking for a backyard powerhouse? A trusty tailgate companion? There are too many options, and no one helping you filter through the noise.
-  %p.body-copy
-    We're working on a recommendation tool that focuses on your lifestyle and what you value when looking to invest in a new grill. Simple questions, one great answer.
-  %p.body-copy
-    Our tool is coming soon. Enter your e-mail below to be the first to know when it is ready. 
-#email.email-submit
-  = form_tag '/users' do
-    = email_field :user, :email
-    = submit_tag "submit email"
+  #hero
+    .content-container
+      %h1.headline
+        Find The Best Grill For You
+      %p.body-copy
+        Are you looking for a backyard powerhouse? A trusty tailgate companion? We can help you filter through the noise.
+      %button.main-call-to-action
+        Get Started
