@@ -2,5 +2,6 @@
 
   - include: jenkins.yml tags=install
   - include: jenkins-plugins.yml tags=plugins
+  - include: jenkins-jobs.yml tags=jobs
   - include: ansible.yml tags=ansible
   - include: ruby.yml tags=ruby
