@@ -1,4 +1,4 @@
-#experiment
+#landing-page
   #hero
     = image_tag "grilling.jpg"
   .content-container
@@ -6,5 +6,4 @@
       Find The Best Grill For You
     %p.body-copy
       Are you looking for a backyard powerhouse? A trusty tailgate companion? We can help you filter through the noise.
-    %button.main-call-to-action
-      Get Started
+    = link_to 'Get Started', '/sign_up', :class => "main-call-to-action"

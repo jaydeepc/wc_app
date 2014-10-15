@@ -1,10 +1,9 @@
-#experiment
-  = image_tag "cat.jpeg"
-  %h1.headline
-    What Grill Is Right For You?
-  %h3.tagline
-    Filter Through The Noise. Find The One.
-  %p.body-copy
-    There's no such thing as "the right grill". Only the right grill for you. Are you looking for a backyard powerhouse? A trusty tailgate companion? There are too many options, and no one helping you filter through the noise.
-  %button.main-call-to-action
-    Get Started
+#landing-page
+  #hero
+    = image_tag "grilling.jpg"
+  .content-container
+    %h1.headline
+      Find The Right Grill For You
+    %p.body-copy
+      Are you looking for a backyard powerhouse? A trusty tailgate companion? We can help you filter through the noise.
+    = link_to 'Get Started', '/sign_up', :class => "main-call-to-action"
