@@ -1,0 +1,19 @@
+@mixin landing-page-action-button() {
+  font-family: 'Oswald', 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px 30px;
+  color: #333;
+  font-size: 24px;
+  background-color: #fe8616;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  display: inline-block;
+  border: 2px solid lighten(#fe8616, 10); 
+  border-left: none;
+  float: left;
+  text-align: center;
+  &:hover {
+    background-color: lighten(#fe8616, 10); 
+  }
+}
