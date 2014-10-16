@@ -7,7 +7,7 @@ class Quiz
       @questions[@currentQuestion()]
 
   answerQuestion: (answer) =>
-    @answers.push(answer.id)
+    @answers.push(answer.text)
     @currentQuestion(@currentQuestion() + 1)
 
     unless @question()

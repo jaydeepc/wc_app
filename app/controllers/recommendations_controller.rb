@@ -1,5 +1,5 @@
 class RecommendationsController < ApplicationController
   def create
-    render json: Recommendation.new(text: 'Raz')
+    render json: Recommendation.find_by_answers(params[:answers])
   end
 end
