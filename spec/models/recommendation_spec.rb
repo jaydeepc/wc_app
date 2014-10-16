@@ -4,7 +4,7 @@ describe Recommendation do
   describe '.find_by_answers' do
     def self.it_returns_the_grill_for answers, grill_info
       it "returns #{grill_info} for #{answers.join(',')}" do
-        expect(Recommendation.find_by_answers(answers).text).to eql grill_info[:name]
+        expect(Recommendation.find_by_answers(answers).name).to eql grill_info[:name]
       end
     end
 

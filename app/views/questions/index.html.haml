@@ -12,9 +12,8 @@
   .recommendation{'data-bind' => 'with: recommendation'}
     #image
       %img{'data-bind' => 'attr: { src: img }' }
-    %div
-      %h2{'data-bind' => 'text: text'}
     #description
+      %p{'data-bind' => 'text: name' }
       %p{'data-bind' => 'text: price' }
     %a{'data-bind' => 'attr: { href: link}, text: "Buy me"' }
 

@@ -3,7 +3,7 @@ require "rails_helper"
 describe RecommendationsController do
   describe 'POST #create' do
     before do
-      allow(Recommendation).to receive(:find_by_answers).and_return(Recommendation.new(text: 'Grill'))
+      allow(Recommendation).to receive(:find_by_answers).and_return(Recommendation.new(name: 'Grill'))
     end
 
     it 'finds a recommendation for the answers in the params' do
@@ -16,7 +16,7 @@ describe RecommendationsController do
       post :create, answers: []
 
       recommendation = JSON.parse(response.body)
-      expect(recommendation["text"]).to eq('Grill')
+      expect(recommendation["name"]).to eq('Grill')
     end
   end
 end
