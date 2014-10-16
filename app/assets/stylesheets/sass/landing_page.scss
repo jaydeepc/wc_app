@@ -1,0 +1,125 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+
+#landing-page, #sign-up, #success {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #28272c;
+
+  #hero img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+    z-index: -1;
+    @media screen and (max-width: 800px) {
+      height: 450px;
+      width: auto;
+    }
+    @media screen and (max-width: 500px) {
+      height: 600px;
+      width: auto;
+      left: -200px;
+    }
+  }
+
+  .content-container {
+    box-sizing: border-box;
+    padding-right: 40%;
+    padding-left: 10%;
+    padding-top: 80px;
+    @media screen and (max-width: 900px) {
+      padding-right: 10%;
+      padding-top: 60px;
+    }
+    @media screen and (max-width: 500px) {
+      padding-right: 10%;
+      padding-top: 45px;
+    }
+  }
+
+  .headline {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 46px;
+    margin-bottom: 15px;
+  }
+
+  .body-copy {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 15px;
+  }
+  .main-call-to-action {
+    font-family: 'Oswald', 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 30px;
+    color: #333;
+    font-size: 24px;
+    background-color: #fe8616;
+    border-radius: 3px;
+    display: inline-block;
+    border: 2px solid lighten(#fe8616, 10); 
+    float: left;
+    &:hover {
+      background-color: lighten(#fe8616, 10); 
+    }
+  }
+
+  .email-submit {
+    input[type="submit"] {
+      font-family: 'Oswald', 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 30px;
+      color: #333;
+      font-size: 24px;
+      background-color: #fe8616;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      display: inline-block;
+      border: 2px solid lighten(#fe8616, 10); 
+      border-left: none;
+      float: left;
+      text-align: center;
+      &:hover {
+        background-color: lighten(#fe8616, 10); 
+      }
+    }
+    input[type="email"] {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      color: #333;
+      font-size: 21px;
+      width: 280px;
+      box-sizing: border-box;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border: 2px solid #fff;
+      display: inline-block;
+      padding: 15px;
+      float: left;
+    }
+    @media screen and (max-width: 609px) {
+      input[type="submit"] {
+        border-radius: 3px 3px 3px 3px;
+        width: 100%;
+        margin-top: 10px;
+        border-left: 2px solid lighten(#fe8616, 10); 
+      }
+      input[type="email"] {
+        border-radius: 3px 3px 3px 3px;
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+}
