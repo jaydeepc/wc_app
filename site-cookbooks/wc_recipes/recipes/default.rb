@@ -25,7 +25,7 @@ execute "create postgres user" do
   guard = <<-EOH
     psql -c "select * from pg_user where usename='admin'" | grep -c admin}
     EOH
-  
+
   code = <<-EOH
    cat << EOF | sudo su postgres
       psql
@@ -36,7 +36,15 @@ execute "create postgres user" do
   not_if guard
 end
 
+#phantomjs deps
+apt_package 'build-essential'
+apt_package 'chrpath'
+apt_package 'git-core'
+apt_package 'libssl-dev'
+apt_package 'libfontconfig1-dev'
+apt_package 'libxft-dev'
+
 execute 'npm install -g phantomjs'
 
-# For some reason the command fails with file not found error if run on it's own 
+# For some reason the command fails with file not found error if run on it's own
 execute "bundle install --gemfile=/vagrant/Gemfile"
