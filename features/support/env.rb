@@ -9,6 +9,7 @@ require 'capybara/poltergeist'
 CONFIG = YAML.load_file("features/support/config.yml")
 #initialize a new Driver
 
+include Capybara::DSL
 # Capybara.register_driver :selenium do |app|
 #   profile = Selenium::WebDriver::Firefox::Profile.new
 #   Capybara::Selenium::Driver.new( app, :browser => :firefox, :profile => profile )
@@ -16,7 +17,9 @@ CONFIG = YAML.load_file("features/support/config.yml")
 #
 # Capybara.default_driver = :selenium
 
+
 #Headless Driver
+
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, :js_errors => false, :window_size => [320, 548])
 end
