@@ -1,9 +1,7 @@
 require_relative '../../features/pages/home_page'
-require_relative '../../features/pages/abstract_page'
 
 Given(/^he is in the home page$/) do
-  @base_page = AbstractPage.new
-  @home_page = @base_page.navigate_to_home_page
+  @home_page = HomePage.new.navigate_to_home_page
 end
 
 When(/^he enters email address in email field$/) do
