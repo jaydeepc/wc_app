@@ -6,7 +6,11 @@ class Recommendation
   @img_url = 'http://placehold.it/350x150'
 
   def self.find_by_answers answers
-    recommendations = {
+    all[answers]
+  end
+
+  def self.all
+    {
       ['Small', 'Few', 'Traditional'] => Recommendation.new(name: 'American Gourmet', price: '$129.99', link: @landing_page_url, img: 'american-gourmet.jpg'),
       ['Small', 'Lots', 'Traditional'] => Recommendation.new(name: '2 burner gas', price: '$189.00', link: @landing_page_url, img: 'charbroil-2-burner.jpg'),
       ['Small', 'Few', 'New'] => Recommendation.new(name: 'Patio bistro electric', price: '$139.00', link: @landing_page_url, img: 'patio-bistro-240-electric.jpg'),
@@ -16,7 +20,5 @@ class Recommendation
       ['Big', 'Few', 'New'] => Recommendation.new(name: 'Performance 3 burner', price: '$349.00', link: @landing_page_url, img: 'performance-3-burner.png'),
       ['Big', 'Lots', 'New'] => Recommendation.new(name: 'Performance 4 burner', price: '$549.00', link: @landing_page_url, img: 'performance-4-burner.jpg')
     }
-
-    recommendations[answers]
   end
 end
