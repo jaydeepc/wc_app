@@ -8,6 +8,14 @@ describe 'Quiz', ->
     it 'sets the question to the first one in the list', ->
       expect(@quiz.question()).toEqual(@question1)
 
+  describe 'started', ->
+    it 'is not started upon initialization', ->
+      expect(@quiz.started()).toBeFalsy()
+
+    it 'is started after startQuiz is called', ->
+      @quiz.startQuiz()
+      expect(@quiz.started()).toBeTruthy()
+
   describe 'answering questions', ->
     it 'changes the question to the next one when an answer is received', ->
       @quiz.answerQuestion(text: 'Because')

@@ -1,11 +1,16 @@
 #quiz
-  .question{'data-bind' => 'with: question'}
-    %p{'data-bind' => 'text: text'}
-      .answers{'data-bind' => 'foreach: answers'}
-        %button{'data-bind' => 'text: text, click: $root.answerQuestion'}
+  .welcome{'data-bind' => 'ifnot: started'}
+    %h2 FIND THE BEST GRILL FOR YOU
+    %p Are you looking for a backyard powerhouse? A trusty tailgate companion? We can help you filter through the noise.
+    %button{'data-bind' => 'click: startQuiz'} Start
+  .questions{'data-bind' => 'if: started'}
+    .question{'data-bind' => 'with: question'}
+      %p{'data-bind' => 'text: text'}
+        .answers{'data-bind' => 'foreach: answers'}
+          %button{'data-bind' => 'text: text, click: $root.answerQuestion'}
 
-  .recommendation{'data-bind' => 'with: recommendation'}
-    %p{'data-bind' => 'text: text'}
+    .recommendation{'data-bind' => 'with: recommendation'}
+      %p{'data-bind' => 'text: text'}
 
 :javascript
   $(function() {

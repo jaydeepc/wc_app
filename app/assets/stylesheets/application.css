@@ -13,4 +13,5 @@
  *= require_self
  *= require ./sass/reset
  *= require ./sass/application
+ *= require quiz
  */

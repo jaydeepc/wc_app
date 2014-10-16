@@ -6,6 +6,11 @@ class Quiz
     @question = ko.computed =>
       @questions[@currentQuestion()]
 
+    @started = ko.observable(false)
+
+  startQuiz: =>
+    @started(true)
+
   answerQuestion: (answer) =>
     @answers.push(answer.text)
     @currentQuestion(@currentQuestion() + 1)
