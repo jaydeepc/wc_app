@@ -1,26 +1,35 @@
 require 'capybara/cucumber'
-require 'site_prism'
 require 'selenium-webdriver'
 require 'capybara'
 require 'cucumber'
 require 'fileutils'
 require 'capybara/dsl'
+require 'capybara/poltergeist'
 
 CONFIG = YAML.load_file("features/support/config.yml")
 #initialize a new Driver
-Capybara.register_driver :iphone do |app|
-  caps = {
-      :deviceName => CONFIG['device_name'],
-      :browserName => CONFIG['browser_name'],
-      :platformName => CONFIG['platform_name'],
-      :versionNumber => CONFIG['version_name']
-  }
 
-  Capybara::Selenium::Driver.new(app, {:browser => :remote, :url => CONFIG['appium_server'], :desired_capabilities => caps})
+# Capybara.register_driver :selenium do |app|
+#   profile = Selenium::WebDriver::Firefox::Profile.new
+#   Capybara::Selenium::Driver.new( app, :browser => :firefox, :profile => profile )
+# end
+#
+# Capybara.default_driver = :selenium
+
+#Headless Driver
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, :js_errors => false, :window_size => [320, 548])
 end
 
-Capybara.default_driver = :iphone
-Capybara.app_host = 'https://www.sabergrills.com'
+Capybara.configure do |c|
+  c.javascript_driver = :poltergeist
+  c.default_driver = :poltergeist
+  c.app_host = CONFIG['app_host']
+end
+
+
+# window = Capybara.current_session.driver.browser
+# window.resize_to(568, 300)
 
 
 #Take ScreenShots on Failure
@@ -40,7 +49,9 @@ After do |scenario|
     name_of_scenario = time + scenario.name.gsub(/\s+/, "_").gsub("/","_")
     file_path = File.expand_path(new_dir_path)+'/'+name_of_scenario +'.png'
     sleep 1
-    page.driver.browser.save_screenshot file_path
+    # Capybara.current_driver.render(file_path)
+    page.driver.render(file_path)
+    # page.driver.browser.save_screenshot file_path
     embed("#{file_path}", "image/png", "SCREENSHOT")
   end
 end

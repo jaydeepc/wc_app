@@ -36,6 +36,7 @@ execute "create postgres user" do
   not_if guard
 end
 
+execute 'npm install -g phantomjs'
 
 # For some reason the command fails with file not found error if run on it's own 
 execute "bundle install --gemfile=/vagrant/Gemfile"
