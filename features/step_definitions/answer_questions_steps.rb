@@ -48,7 +48,7 @@ Given(/^that he has answered all the questions with combination \(Small, Lots, T
 end
 
 Then(/^he gets 'Char-Broil 2-burner gas grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Char-Broil 2-burner gas grill')
+  expect(@recommendation_page).to have_content('Char-Broil 2-burner gas grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Small, Few, New\)$/) do
@@ -57,7 +57,7 @@ Given(/^that he has answered all the questions with combination \(Small, Few, Ne
 end
 
 Then(/^he gets 'Patio Bistro 240 TRU-Infrared electric grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Patio Bistro 240 TRU-Infrared electric grill')
+  expect(@recommendation_page).to have_content('Patio Bistro 240 TRU-Infrared electric grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Small, Lots, New\)$/) do
@@ -66,7 +66,7 @@ Given(/^that he has answered all the questions with combination \(Small, Lots, N
 end
 
 Then(/^he gets 'Commercial TRU-Infrared 2-burner gas grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Commercial TRU-Infrared 2-burner gas grill')
+  expect(@recommendation_page).to have_content('Commercial TRU-Infrared 2-burner gas grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Big, Few, Traditional\)$/) do
@@ -75,16 +75,16 @@ Given(/^that he has answered all the questions with combination \(Big, Few, Trad
 end
 
 Then(/^he gets 'Char-Broil Classic 3-burner gas grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Char-Broil Classic 3-burner gas grill')
+  expect(@recommendation_page).to have_content('Char-Broil Classic 3-burner gas grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Big, Lots, Traditional\)$/) do
   step 'navigate to first question'
-  @recommendation_page = @question_page.complete_questionnaire('Big', 'Few', 'Traditional')
+  @recommendation_page = @question_page.complete_questionnaire('Big', 'Lots', 'Traditional')
 end
 
-Then(/^he gets 'Char-Broil Classic 6-burner gas grill' according to the combination$/) do |arg1|
-  expect(@recommendation_page.get_recommendation).to have_content('Char-Broil Classic 6-burner gas grill')
+Then(/^he gets 'Char-Broil Classic 6-burner gas grill' according to the combination$/) do
+  expect(@recommendation_page).to have_content('Char-Broil Classic 6-burner gas grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Big, Few, New\)$/) do
@@ -93,7 +93,7 @@ Given(/^that he has answered all the questions with combination \(Big, Few, New\
 end
 
 Then(/^he gets 'Performance TRU-Infrared 3-burner gas grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Performance TRU-Infrared 3-burner gas grill')
+  expect(@recommendation_page).to have_content('Performance TRU-Infrared 3-burner gas grill')
 end
 
 Given(/^that he has answered all the questions with combination \(Big, Lots, New\)$/) do
@@ -102,7 +102,7 @@ Given(/^that he has answered all the questions with combination \(Big, Lots, New
 end
 
 Then(/^he gets 'Performance TRU-Infrared 4-burner gas grill' according to the combination$/) do
-  expect(@recommendation_page.get_recommendation).to have_content('Performance TRU-Infrared 4-burner gas grill')
+  expect(@recommendation_page).to have_content('Performance TRU-Infrared 4-burner gas grill')
 end
 
 def verify_attributes(question_text, answer_option_1, answer_option_2)
