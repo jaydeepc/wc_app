@@ -34,6 +34,7 @@ gem 'haml-rails'
 gem 'selenium-webdriver'
 
 gem 'cucumber'
+gem 'poltergeist'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

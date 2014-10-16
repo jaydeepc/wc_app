@@ -1,8 +1,2 @@
-#Device Details
-device_name: "iPhone Simulator"
-browser_name: "Safari"
-platform_name: "iOS"
-version_number: "7.1"
-
-#Server Details
-appium_server: "http://localhost:4723/wd/hub/"
+#Base Url
+app_host: 'http://tw-wc-q-app.herokuapp.com'
