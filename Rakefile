@@ -10,3 +10,5 @@ Rails.application.load_tasks
 Cucumber::Rake::Task.new(:regression)do |t|
   t.cucumber_opts = "features --tags @regression -f json --out features/result.json"
 end
+
+task :default => ['spec', 'spec:javascript']
